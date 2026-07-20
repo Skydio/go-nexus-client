@@ -35,6 +35,10 @@ func getTestPypiProxyRepository(name string) repository.PypiProxyRepository {
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 		},
+		Pypi: &repository.Pypi{
+			IndexPath:         "/simple",
+			RemoveQuarantined: true,
+		},
 	}
 }
 
