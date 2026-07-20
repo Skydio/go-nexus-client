@@ -27,4 +27,13 @@ type PypiProxyRepository struct {
 	RoutingRule     *string `json:"routingRule,omitempty"`
 	RoutingRuleName *string `json:"routingRuleName,omitempty"`
 	*Cleanup        `json:"cleanup,omitempty"`
+	*Pypi           `json:"pypi,omitempty"`
+}
+
+type Pypi struct {
+	// Remote Index Path. Defaults to "/simple" server-side when omitted; set to
+	// "" for indexes served at the root (e.g. download.pytorch.org/whl/cu129).
+	IndexPath string `json:"indexPath"`
+	// Remove Quarantined Versions
+	RemoveQuarantined bool `json:"removeQuarantined"`
 }
