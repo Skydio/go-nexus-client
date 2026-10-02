@@ -7,6 +7,15 @@ type GoGroupRepository struct {
 	Storage `json:"storage"`
 }
 
+type GoHostedRepository struct {
+	Name    string        `json:"name"`
+	Online  bool          `json:"online"`
+	Storage HostedStorage `json:"storage"`
+
+	*Cleanup   `json:"cleanup,omitempty"`
+	*Component `json:"component,omitempty"`
+}
+
 type GoProxyRepository struct {
 	Name          string `json:"name"`
 	Online        bool   `json:"online"`
