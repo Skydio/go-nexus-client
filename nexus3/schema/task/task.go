@@ -9,14 +9,19 @@ type FrequencyXO struct {
 }
 
 type Task struct {
-	ID           string       `json:"id"`
-	Type         string       `json:"type"`
-	Name         string       `json:"name"`
-	Message      string       `json:"message,omitempty"`
-	CurrentState string       `json:"currentState,omitempty"`
-	Frequency    *FrequencyXO `json:"frequency,omitempty"`
-	NextRun      string       `json:"nextRun,omitempty"`
-	LastRun      string       `json:"lastRun,omitempty"`
+	ID                    string                 `json:"id"`
+	Type                  string                 `json:"type"`
+	Name                  string                 `json:"name"`
+	Message               string                 `json:"message,omitempty"`
+	CurrentState          string                 `json:"currentState,omitempty"`
+	LastRunResult         string                 `json:"lastRunResult,omitempty"`
+	Enabled               bool                   `json:"enabled"`
+	AlertEmail            string                 `json:"alertEmail,omitempty"`
+	NotificationCondition string                 `json:"notificationCondition,omitempty"`
+	Frequency             *FrequencyXO           `json:"frequency,omitempty"`
+	NextRun               string                 `json:"nextRun,omitempty"`
+	LastRun               string                 `json:"lastRun,omitempty"`
+	Properties            map[string]interface{} `json:"properties,omitempty"`
 }
 
 type TaskCreateStruct struct {
@@ -28,4 +33,5 @@ type TaskCreateStruct struct {
 	Frequency             *FrequencyXO           `json:"frequency,omitempty"`
 	Message               string                 `json:"message,omitempty"`
 	Properties            map[string]interface{} `json:"properties,omitempty"`
+	ConcurrentRun         bool                   `json:"concurrentRun,omitempty"`
 }
