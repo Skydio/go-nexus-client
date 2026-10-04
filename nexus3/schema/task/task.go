@@ -22,6 +22,16 @@ type Task struct {
 	NextRun               string                 `json:"nextRun,omitempty"`
 	LastRun               string                 `json:"lastRun,omitempty"`
 	Properties            map[string]interface{} `json:"properties,omitempty"`
+
+	// GET /v1/tasks/{id} returns the schedule flat on the task, not nested
+	// under "frequency" as on create (verified on Nexus 3.94.1). A task
+	// created with schedule "cron" reads back as "advanced", and the server
+	// fills in startDate (an ISO-8601 string) and timeZoneOffset itself.
+	Schedule       string `json:"schedule,omitempty"`
+	CronExpression string `json:"cronExpression,omitempty"`
+	StartDate      string `json:"startDate,omitempty"`
+	TimeZoneOffset string `json:"timeZoneOffset,omitempty"`
+	RecurringDays  []int  `json:"recurringDays,omitempty"`
 }
 
 type TaskCreateStruct struct {
